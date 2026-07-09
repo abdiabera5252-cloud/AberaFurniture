@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abera | High-End Showroom & Custom Furniture</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FAF9F6',
+                        charcoal: '#1C1C1C',
+                        earth: '#3A2E2B',
+                        ochre: '#C69C6D',
+                        ochreHover: '#b3885a'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        '3d-subtle': '0 20px 40px -15px rgba(28, 28, 28, 0.07)',
+                        '3d-heavy': '0 35px 60px -15px rgba(28, 28, 28, 0.15)',
+                        'architectural': '16px 16px 0px 0px rgba(58, 46, 43, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS 3D Perspective Rules */
+        .perspective-canvas {
+            perspective: 1000px;
+        }
+        .card-3d {
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .pop-out {
+            transform: translateZ(25px);
+        }
+        /* Custom scrollbar for showroom feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FAF9F6; }
+        ::-webkit-scrollbar-thumb { background: #d6d3cd; }
+        ::-webkit-scrollbar-thumb:hover { background: #C69C6D; }
+    </style>
+</head>
+
+<body class="bg-ivory text-charcoal font-sans antialiased selection:bg-ochre selection:text-white overflow-x-hidden">
+
+    <!-- TOP NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-charcoal/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
+            <a href="#" class="font-serif text-3xl md:text-4xl font-bold tracking-[0.25em] uppercase text-charcoal">
+                Abera<span class="text-ochre">.</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-10 text-xs font-medium tracking-[0.15em] uppercase text-charcoal/80">
+                <a href="#hero" class="hover:text-ochre transition-colors">Showroom</a>
+                <a href="#categories" class="hover:text-ochre transition-colors">Collections</a>
+                <a href="#featured" class="hover:text-ochre transition-colors">Featured</a>
+                <a href="#craft" class="hover:text-ochre transition-colors">Craftsmanship</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:0911089416" class="hidden sm:inline-flex items-center gap-2 border border-charcoal/20 px-5 py-3 text-[11px] font-semibold tracking-[0.2em] uppercase hover:border-charcoal transition-all rounded-[2px]">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-ochre"></i> 0911 08 94 16
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE 1: THE SHOWROOM ENTRANCE (HERO) -->
+    <section id="hero" class="relative pt-12 pb-24 md:py-32 max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Typography Left -->
+            <div class="lg:col-span-7 z-10">
+                <span class="text-ochre text-xs font-semibold uppercase tracking-[0.3em] mb-4 block">
+                    Bespoke Local Production
+                </span>
+                <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal leading-[0.95] mb-8 text-charcoal">
+                    Modern Comfort,<br>
+                    <span class="italic font-light text-earth">Crafted</span> to Last.
+                </h1>
+                <p class="text-charcoal/70 text-base sm:text-lg font-light max-w-lg mb-10 leading-relaxed">
+                    Custom-proportioned couches, architectural seating, and minimalist stools. Built with reinforced hardwood and tailored to the exact geometry of your living space.
+                </p>
+                <div class="flex flex-wrap items-center gap-5">
+                    <a href="#categories" class="bg-charcoal text-ivory px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] rounded-[2px] hover:bg-ochre transition-all duration-300 shadow-xl shadow-charcoal/10">
+                        Explore Our Collection
+                    </a>
+                    <a href="#featured" class="px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-charcoal hover:text-ochre transition-colors inline-flex items-center gap-2">
+                        View Showroom Specs <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3D Optical Illusion Right -->
+            <div class="lg:col-span-5 relative perspective-canvas pl-4 pt-4">
+                <div class="absolute inset-0 bg-earth/10 translate-x-6 translate-y-6 rounded-[2px] -z-10 transition-transform duration-500 ease-out"></div>
+                
+                <div class="relative bg-white p-3 rounded-[2px] shadow-3d-heavy border border-white">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" 
+                         alt="Abera Flagship Couch" 
+                         class="w-full h-[420px] lg:h-[540px] object-cover object-center grayscale-[15%] contrast-[105%]">
+                    
+                    <div class="absolute bottom-8 -left-8 bg-ivory border border-charcoal/10 p-5 shadow-2xl max-w-[220px] hidden sm:block">
+                        <p class="font-serif italic text-lg leading-none mb-1">Lifetime Guarantee</p>
+                        <p class="text-[10px] uppercase tracking-widest text-charcoal/60">Reinforced Solid Wood Frames</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- THE ABERA EDGE (VALUE PROPOSITIONS) -->
+    <section class="border-y border-charcoal/10 bg-white/50 py-16">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-charcoal/10">
+            
+            <div class="flex items-start gap-5 pt-8 md:pt-0 md:px-6 first:pl-0">
+                <div class="p-3 bg-ivory border border-charcoal/10 text-ochre shrink-0">
+                    <i data-lucide="ruler" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl font-bold mb-2">Custom Dimensions</h3>
+                    <p class="text-xs text-charcoal/70 font-light leading-relaxed">Forget standard sizing. We adjust frame widths, seat depths, and heights to fit your room's blueprint.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-5 pt-8 md:pt-0 md:px-6">
+                <div class="p-3 bg-ivory border border-charcoal/10 text-ochre shrink-0">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl font-bold mb-2">Curated Fabrics</h3>
+                    <p class="text-xs text-charcoal/70 font-light leading-relaxed">Select from heavy-weight imported boucle, stain-resistant velvets, breathable linens, or full-grain leather.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-5 pt-8 md:pt-0 md:px-6">
+                <div class="p-3 bg-ivory border border-charcoal/10 text-ochre shrink-0">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl font-bold mb-2">Workshop Integrity</h3>
+                    <p class="text-xs text-charcoal/70 font-light leading-relaxed">No particle board. Every piece is anchored by kiln-dried internal framing built by master craftsmen.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CORE CATEGORIES (VISUAL NAVIGATION) -->
+    <section id="categories" class="py-28 max-w-7xl mx-auto px-6 md:px-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div>
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-ochre block mb-2">Architectural Pillars</span>
+                <h2 class="font-serif text-4xl sm:text-6xl font-normal">The Core Collections</h2>
+            </div>
+            <p class="text-xs uppercase tracking-[0.2em] text-charcoal/60 mt-4 md:mt-0">Select a category to inspect specs</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="#" class="group relative h-[500px] overflow-hidden rounded-[2px] block">
+                <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800&q=80" alt="Couches" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8">
+                    <span class="text-[10px] font-medium tracking-[0.25em] uppercase text-ochre block mb-1">01 / Flagship</span>
+                    <h3 class="font-serif text-3xl text-white group-hover:translate-x-2 transition-transform duration-300">Couches & Sofas</h3>
+                </div>
+            </a>
+
+            <a href="#" class="group relative h-[500px] overflow-hidden rounded-[2px] block md:-translate-y-6">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="Chairs" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8">
+                    <span class="text-[10px] font-medium tracking-[0.25em] uppercase text-ochre block mb-1">02 / Seating</span>
+                    <h3 class="font-serif text-3xl text-white group-hover:translate-x-2 transition-transform duration-300">Accent Chairs</h3>
+                </div>
+            </a>
+
+            <a href="#" class="group relative h-[500px] overflow-hidden rounded-[2px] block">
+                <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" alt="Stools" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8">
+                    <span class="text-[10px] font-medium tracking-[0.25em] uppercase text-ochre block mb-1">03 / Minimalist</span>
+                    <h3 class="font-serif text-3xl text-white group-hover:translate-x-2 transition-transform duration-300">Stools & Ottomans</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS (3D TILT SHOWROOM) -->
+    <section id="featured" class="py-24 bg-white border-t border-charcoal/10 perspective-canvas">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-xs uppercase tracking-[0.3em] text-ochre block mb-3">Curated Highlights</span>
+                <h2 class="font-serif text-4xl sm:text-6xl font-normal mb-6">The Showroom Pieces</h2>
+                <p class="text-xs text-charcoal/60 uppercase tracking-widest">Hover over cards to inspect physical depth</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="card-3d bg-ivory p-6 rounded-[2px] border border-charcoal/5 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden mb-6 bg-white aspect-square">
+                            <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=700&q=80" alt="Sofa" class="w-full h-full object-cover">
+                            <span class="absolute top-3 right-3 bg-charcoal text-ivory text-[9px] uppercase tracking-widest px-2.5 py-1">Best Seller</span>
+                        </div>
+                        <div class="pop-out">
+                            <span class="text-[11px] font-semibold tracking-widest text-ochre uppercase">Modular Sofa</span>
+                            <h4 class="font-serif text-2xl font-bold mt-1 text-charcoal">The Kafa Sectional</h4>
+                            <p class="text-xs text-charcoal/50 mt-1 mb-6">Available in: Matte Velvet, Raw Linen, Boucle</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-charcoal/10 pt-5 mt-4 pop-out">
+                        <div class="flex items-baseline justify-between mb-4">
+                            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Base Specification</span>
+                            <span class="font-sans font-semibold text-sm">Inquire for Quote</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://wa.me/251911089416?text=Hello%20Abera%20Furniture,%20I'm%20interested%20in%20The%20Kafa%20Sectional" target="_blank" class="bg-earth text-ivory py-3 text-[10px] uppercase tracking-widest font-medium text-center hover:bg-ochre transition-colors flex items-center justify-center gap-1.5 rounded-[2px]">
+                                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+                            </a>
+                            <a href="https://t.me/+251911089416" target="_blank" class="border border-charcoal/20 text-charcoal py-3 text-[10px] uppercase tracking-widest font-medium text-center hover:bg-charcoal hover:text-ivory transition-colors flex items-center justify-center gap-1.5 rounded-[2px]">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i> Telegram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card-3d bg-ivory p-6 rounded-[2px] border border-charcoal/5 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden mb-6 bg-white aspect-square">
+                            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&q=80" alt="Chair" class="w-full h-full object-cover">
+                        </div>
+                        <div class="pop-out">
+                            <span class="text-[11px] font-semibold tracking-widest text-ochre uppercase">Accent Chair</span>
+                            <h4 class="font-serif text-2xl font-bold mt-1 text-charcoal">The Sidama Armchair</h4>
+                            <p class="text-xs text-charcoal/50 mt-1 mb-6">Available in: Top-Grain Cognac Leather, Ash Weave</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-charcoal/10 pt-5 mt-4 pop-out">
+                        <div class="flex items-baseline justify-between mb-4">
+                            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Base Specification</span>
+                            <span class="font-sans font-semibold text-sm">Inquire for Quote</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://wa.me/251911089416?text=Hello%20Abera%20Furniture,%20I'm%20interested%20in%20The%20Sidama%20Armchair" target="_blank" class="bg-earth text-ivory py-3 text-[10px] uppercase tracking-widest font-medium text-center hover:bg-ochre transition-colors flex items-center justify-center gap-1.5 rounded-[2px]">
+                                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+                            </a>
+                            <a href="https://t.me/+251911089416" target="_blank" class="border border-charcoal/20 text-charcoal py-3 text-[10px] uppercase tracking-widest font-medium text-center hover:bg-charcoal hover:text-ivory transition-colors flex items-center justify-center gap-1.5 rounded-[2px]">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i> Telegram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-3d bg-ivory p-6 rounded-[2px] border border-charcoal/5 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden mb-6 bg-white aspect-square">
+                            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80" alt="Stool" class="w-full h-full object-cover">
+                        </div>
+                        <div class="pop-out">
+                            <span class="text-[11px] font-semibold tracking-widest text-ochre uppercase">Minimalist Stool</span>
+                            <h4 class="font-serif text-2xl font-bold mt-1 text-charcoal">The Bale Perch</h4>
+                            <p class="text-xs text-charcoal/50 mt-1 mb-6">Available in: Turned Walnut, Bleached Oak</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-charcoal/10 pt-5 mt-4 pop-out">
+                        <div class="flex items-baseline justify-between mb-4">
+                            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Base Specification</span>
+                            <span class="font-sans font-semibold text-sm">Inquire for Quote</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://wa.me/251911089416?text=Hello%20Abera%20Furniture,%20I'm%20interested%20in%20The%20Bale%20Perch" target="_blank" class="bg-earth text-ivory py-3 text-[10px] uppercase tracking-widest font-medium text-center hover:bg-ochre transition-colors flex items-center justify-center gap-1.5 rounded-[2px]">
+                                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+                            </a>
+                            <a href="https://t.me/+251911089416" target="_blank" class="border border-charcoal/20 text-charcoal py-3 text-[10px] uppercase tracking-widest font-medium text-center hover:bg-charcoal hover:text-ivory transition-colors flex items-center justify-center gap-1.5 rounded-[2px]">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i> Telegram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#catalog" class="inline-block border-b border-charcoal pb-1 text-xs uppercase tracking-[0.25em] font-semibold hover:text-ochre hover:border-ochre transition-colors">
+                    View Entire Showroom Catalog (24 Pieces)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF / EDITORIAL QUOTE -->
+    <section class="bg-earth text-ivory py-28 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <i data-lucide="quote" class="w-10 h-10 text-ochre mx-auto mb-8 opacity-60"></i>
+            <blockquote class="font-serif text-2xl sm:text-4xl lg:text-5xl font-light italic leading-snug mb-8">
+                "The structural integrity is unmistakable. Abera didn’t just deliver a customized couch; they anchored the geometry of our entire living space."
+            </blockquote>
+            <cite class="not-italic text-[11px] uppercase tracking-[0.3em] text-ochre block font-semibold">
+                — Private Residential Commission, 2025
+            </cite>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH HARDCODED DIRECT INQUIRY NUMBER -->
+    <footer class="bg-charcoal text-ivory pt-20 pb-12 border-t border-white/10 text-xs">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10 items-center">
+            
+            <!-- Brand & Tagline -->
+            <div class="md:col-span-5">
+                <div class="font-serif text-3xl tracking-widest uppercase mb-3">Abera<span class="text-ochre">.</span></div>
+                <p class="text-ivory/50 font-light text-sm max-w-sm leading-relaxed">
+                    Custom couches, chairs, and stools built to order. Positioned at the intersection of modern minimalist lines and enduring workshop durability.
+                </p>
+            </div>
+
+            <!-- Direct Contact Callout -->
+            <div class="md:col-span-4 md:border-l md:border-white/10 md:pl-8">
+                <span class="text-[10px] tracking-[0.25em] uppercase text-ochre block font-semibold mb-2">Direct Showroom Line</span>
+                <a href="tel:0911089416" class="font-serif text-3xl md:text-4xl tracking-wider text-white hover:text-ochre transition-colors block font-normal">
+                    0911 08 94 16
+                </a>
+                <span class="text-[11px] text-ivory/40 block mt-1">Available on WhatsApp & Telegram</span>
+            </div>
+
+            <!-- Quick Action Links -->
+            <div class="md:col-span-3 flex flex-col gap-3 md:items-end">
+                <a href="https://wa.me/251911089416" target="_blank" class="text-ivory/80 hover:text-ochre tracking-[0.15em] uppercase text-[11px] transition-colors flex items-center gap-2">
+                    Message on WhatsApp <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="https://t.me/+251911089416" target="_blank" class="text-ivory/80 hover:text-ochre tracking-[0.15em] uppercase text-[11px] transition-colors flex items-center gap-2">
+                    Connect on Telegram <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="tel:0911089416" class="text-ivory/80 hover:text-ochre tracking-[0.15em] uppercase text-[11px] transition-colors flex items-center gap-2">
+                    Call Workshop <i data-lucide="phone" class="w-3 h-3"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-ivory/30">
+            <p>© 2026 Abera Furniture. All Rights Reserved.</p>
+            <p>Direct Inquiry Hub • Tel: 0911089416</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE 3D ENGINE & ICONS SCRIPT -->
+    <script>
+        lucide.createIcons();
+
+        const cards = document.querySelectorAll('.card-3d');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -7;
+                const rotateY = ((x - centerX) / centerX) * 7;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+                card.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.18)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                card.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
